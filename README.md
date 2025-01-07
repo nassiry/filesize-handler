@@ -1,4 +1,13 @@
-# FileSizeHandler
+<div align="center">
+
+# PHP FileSizeHandler
+
+![Packagist Downloads](https://img.shields.io/packagist/dt/nassiry/filesize-handler)
+![Packagist Version](https://img.shields.io/packagist/v/nassiry/filesize-handler)
+![PHP](https://img.shields.io/badge/PHP-%5E8.0-blue)
+![License](https://img.shields.io/github/license/nassiry/filesize-handler)
+
+</div>
 
 The `FileSizeHandler` class is a utility designed to fetch and format file sizes across various file storage systems. It offers cross-platform compatibility with support for both **SI (decimal)** and **IEC (binary)** standards, making it HDD-agnostic and highly flexible.
 - **Local Files**
