@@ -1,0 +1,41 @@
+{
+    "name": "nassiry/filesize-handler",
+    "description": "A PHP package for handling file size with binary, decimal & locale units support.",
+    "keywords": [
+        "file-size",
+        "php-file-zie",
+        "php-size-binary",
+        "php-size-decimal"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "A.S Nassiry",
+            "email": "me@example.com",
+            "homepage": "https://github.com/nassiry/filesize-handler",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "ext-intl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nassiry\\FileSizeUtility\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-paths": {
+            "extensions/{$name}/": ["type:filesize-handler-extension"]
+        }
+    },
+    "suggest": {
+        "filesize-handler/ftp-extension": "Add support for FTP file sizes.",
+        "filesize-handler/s3-extension": "Add support for Amazon S3 file sizes.",
+        "filesize-handler/google-cloud-extension": "Add support for Google Cloud file sizes.",
+        "filesize-handler/remote-extension": "Add support for Remote file sizes."
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
