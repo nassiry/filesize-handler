@@ -140,6 +140,11 @@ $handler = FileSizeHandler::create('fr_FR', $customUnits)
 
 echo $handler->formattedSize(1); // Example output: "1,2 Mio"
 ```
+#### Key Points:
+Two-letter country codes are based on the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) standard and are used in locale naming conventions.
+
+- **Examples of Supported Locales**: `en_US`, `fr_FR`, `de_DE`.
+- **The Default**: units and locale are set to `en_US`
 
 ## API Reference
 
