@@ -18,7 +18,8 @@
     ],
     "require": {
         "php": ">=8.0",
-        "ext-intl": "*"
+        "ext-intl": "*",
+        "composer/installers": "^1.12"
     },
     "autoload": {
         "psr-4": {
@@ -31,10 +32,10 @@
         }
     },
     "suggest": {
-        "filesize-handler/ftp-extension": "Add support for FTP file sizes.",
-        "filesize-handler/s3-extension": "Add support for Amazon S3 file sizes.",
-        "filesize-handler/google-cloud-extension": "Add support for Google Cloud file sizes.",
-        "filesize-handler/remote-extension": "Add support for Remote file sizes."
+        "nassiry/filesize-handler-ftp-extension": "Add support for FTP file sizes.",
+        "nassiry/filesize-handler-s3-extension": "Add support for Amazon S3 file sizes.",
+        "nassiry/filesize-handler-googlecloud-extension": "Add support for Google Cloud file sizes.",
+        "nassiry/filesize-handler-remote-extension": "Add support for Remote file sizes."
     },
     "minimum-stability": "dev",
     "prefer-stable": true
