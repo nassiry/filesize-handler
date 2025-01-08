@@ -26,6 +26,19 @@ When working with file sizes, differences in measurement units across systems ca
 - **Extensibility**: Easily extend functionality by integrating additional storage systems via a simple, well-defined interface.
 
 
+#### Useful Links
+1. [Wikipedia: Binary Prefixes](https://en.wikipedia.org/wiki/Binary_prefix?utm_source=filesize-handler)
+    - Comprehensive explanation of binary (KiB, MiB) vs. decimal (KB, MB) prefixes.
+2. [NIST: Prefixes for Binary Multiples](https://physics.nist.gov/cuu/Units/binary.html?utm_source=filesize-handler)
+    - Official standards for binary-based units.
+3. [IBM: Units of Measurement for Storage Data](https://www.ibm.com/docs/en/storage-insights?topic=overview-units-measurement-storage-data?utm_source=filesize-handler)
+    - Insights into storage measurement across platforms.
+4. [Google: Byte Units](https://developers.google.com/style/units-of-measure#byte-units?utm_source=filesize-handler)
+    - Guidelines for using decimal and binary units consistently.
+5. [Metric View: What are binary prefixes?](https://metricviews.uk/2024/02/18/what-are-binary-prefixes/?utm_source=filesize-handler)
+    - Provides an overview of binary prefixes and their usage
+
+
 ### Features
 1. **Supports Local, Remote, and FTP Files:**
     - Easily calculate file sizes from multiple sources.
@@ -43,27 +56,6 @@ When working with file sizes, differences in measurement units across systems ca
     - Directly `echo` the handler instance to get the formatted size.
 7. **Custom Source Support**:
     - Implement `FileSourceInterface` and register your custom source.
-
-#### Useful Links
-1. [Wikipedia: Binary Prefixes](https://en.wikipedia.org/wiki/Binary_prefix?utm_source=filesize-handler)
-    - Comprehensive explanation of binary (KiB, MiB) vs. decimal (KB, MB) prefixes.
-2. [NIST: Prefixes for Binary Multiples](https://physics.nist.gov/cuu/Units/binary.html?utm_source=filesize-handler)
-   - Official standards for binary-based units.
-3. [IBM: Units of Measurement for Storage Data](https://www.ibm.com/docs/en/storage-insights?topic=overview-units-measurement-storage-data?utm_source=filesize-handler)
-    - Insights into storage measurement across platforms.
-4. [Google: Byte Units](https://developers.google.com/style/units-of-measure#byte-units?utm_source=filesize-handler)
-    - Guidelines for using decimal and binary units consistently.
-5. [Metric View: What are binary prefixes?](https://metricviews.uk/2024/02/18/what-are-binary-prefixes/?utm_source=filesize-handler)
-    - Provides an overview of binary prefixes and their usage
-    
-### How It Works
-`FileSizeHandler` provides developers with a simple yet powerful toolkit to ensure consistent file size handling across systems. Whether working with local files or integrating with remote/cloud storage, the class offers precise control over file size calculations and formatting.
-
-Here’s what it brings to the table:
-
-- Accurate file size conversion between binary and decimal units.
-- Cross-platform consistency to handle discrepancies in file size reporting.
-- Extensibility for new storage systems through a straightforward interface.
 
 ### Requirements
 - **PHP**: Version 8.0 or higher
