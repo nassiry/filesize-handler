@@ -71,7 +71,7 @@ composer require nassiry/filesize-handler
 ### Local File
 By default, the library supports fetching file sizes for local files.
 ```php
-use YourNamespace\FileSizeHandler;
+use Nassiry\FileSizeUtility\FileSizeHandler;
 
 $handler = FileSizeHandler::create()
     ->local('/path/to/file')
@@ -89,8 +89,7 @@ echo FileSizeHandler::create()
 ### Extending the Library
 To add support for a new file source, implement the `FileSourceInterface`:
 ```php
-use FileSizeUtility\Sources\FileSourceInterface;
-use FileSizeUtility\FileSizeHandler;
+use Nassiry\FileSizeUtility\Sources\FileSourceInterface;
 
 class CustomCloudSource implements FileSourceInterface
 {
