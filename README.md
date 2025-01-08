@@ -31,9 +31,9 @@ When working with file sizes, differences in measurement units across systems ca
     - Comprehensive explanation of binary (KiB, MiB) vs. decimal (KB, MB) prefixes.
 2. [NIST: Prefixes for Binary Multiples](https://physics.nist.gov/cuu/Units/binary.html?utm_source=filesize-handler)
     - Official standards for binary-based units.
-3. [IBM: Units of Measurement for Storage Data](https://www.ibm.com/docs/en/storage-insights?topic=overview-units-measurement-storage-data?utm_source=filesize-handler)
+3. [IBM: Units of Measurement for Storage Data](https://www.ibm.com/docs/en/storage-insights?topic=overview-units-measurement-storage-data)
     - Insights into storage measurement across platforms.
-4. [Google: Byte Units](https://developers.google.com/style/units-of-measure#byte-units?utm_source=filesize-handler)
+4. [Google: Byte Units](https://developers.google.com/style/units-of-measure#byte-units)
     - Guidelines for using decimal and binary units consistently.
 5. [Metric View: What are binary prefixes?](https://metricviews.uk/2024/02/18/what-are-binary-prefixes/?utm_source=filesize-handler)
     - Provides an overview of binary prefixes and their usage
@@ -140,6 +140,11 @@ $handler = FileSizeHandler::create('fr_FR', $customUnits)
 
 echo $handler->formattedSize(1); // Example output: "1,2 Mio"
 ```
+#### Key Points:
+Two-letter country codes are based on the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) standard and are used in locale naming conventions.
+
+- **Examples of Supported Locales**: `en_US`, `fr_FR`, `de_DE`.
+- **The Default**: units and locale are set to `en_US`
 
 ## API Reference
 
