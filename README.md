@@ -83,7 +83,8 @@ echo $handler->formattedSize(); // Example output: "1.23 MiB"
 // Or use directly with echo
 echo FileSizeHandler::create()
     ->local('/path/to/file')
-    ->baseBinary();
+    ->baseBinary()
+    ->formattedSize();
 ```
 
 ### Extending the Library
