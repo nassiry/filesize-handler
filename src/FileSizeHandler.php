@@ -147,7 +147,7 @@ class FileSizeHandler
      *
      * @return string The formatted size with the appropriate unit.
      */
-    public function formattedSize(int $precision = 2): string
+    public function format(int $precision = 2): string
     {
         $bytes = $this->sizeInBytes();
         $units = $this->getUnits();
@@ -164,13 +164,44 @@ class FileSizeHandler
     }
 
     /**
+     * @deprecated since version 1.1.0, use format() instead.
+     *
+     * @param int $precision
+     * @return string
+     */
+    public function formattedSize(int $precision = 2): string
+    {
+        trigger_error(
+            'formattedSize() is deprecated since version 1.1.0 and will be removed in version 2.0.0. Use format() instead.',
+            E_USER_DEPRECATED
+        );
+
+        return $this->format($precision);
+    }
+
+    /**
      * Returns the size of the file in bytes.
      *
      * @return int The size of the file in bytes.
      */
-    public function sizeInBytes(): int
+    public function bytes(): int
     {
         return $this->source->getSizeInBytes();
+    }
+
+    /**
+     * @deprecated since version 1.1.0, use bytes() instead.
+     *
+     * @return int
+     */
+    public function sizeInBytes(): int
+    {
+        trigger_error(
+            'sizeInBytes() is deprecated since version 1.1.0 and will be removed in version 2.0.0. Use bytes() instead.',
+            E_USER_DEPRECATED
+        );
+
+        return $this->bytes();
     }
 
     /**
@@ -178,10 +209,25 @@ class FileSizeHandler
      *
      * @return self
      */
-    public function baseBinary(): self
+    public function binary(): self
     {
         $this->base = self::BASE_BINARY;
         return $this;
+    }
+
+    /**
+     * @deprecated since version 1.1.0, use binary() instead.
+     *
+     * @return self
+     */
+    public function baseBinary(): self
+    {
+        trigger_error(
+            'baseBinary() is deprecated since version 1.1.0 and will be removed in version 2.0.0. Use binary() instead.',
+            E_USER_DEPRECATED
+        );
+
+        return $this->binary();
     }
 
     /**
@@ -189,10 +235,25 @@ class FileSizeHandler
      *
      * @return self
      */
-    public function baseDecimal(): self
+    public function decimal(): self
     {
         $this->base = self::BASE_DECIMAL;
         return $this;
+    }
+
+    /**
+     * @deprecated since version 1.1.0, use decimal() instead.
+     *
+     * @return self
+     */
+    public function baseDecimal(): self
+    {
+        trigger_error(
+            'baseDecimal() is deprecated since version 1.1.0 and will be removed in version 2.0.0. Use decimal() instead.',
+            E_USER_DEPRECATED
+        );
+
+        return $this->decimal();
     }
 
     /**

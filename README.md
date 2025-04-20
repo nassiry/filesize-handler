@@ -19,6 +19,44 @@ The `FileSizeHandler` class is a utility designed to fetch and format file sizes
 
 This package addresses the discrepancies in file size measurement (binary vs decimal units) and provides flexible APIs for developers.
 
+### Features
+1. **Supports Local, Remote, and FTP Files:**
+    - Easily calculate file sizes from multiple sources.
+2. **Binary and Decimal Calculations:**
+    - Switch between binary (KiB, MiB, etc.) and decimal (KB, MB, etc.) bases with simple methods.
+3. **Fluent Interface:**
+    - Intuitive method chaining for base selection and size formatting.
+4. **Extensibility:**
+    - Ready for integration with cloud storage systems like S3 and Google Cloud.
+5. **i18n Support:**
+    - Format file size with custom localized units.
+    - Dynamically provide translations for units.
+6. **Chaining and Echo Support:**
+    - Supports method chaining for cleaner code.
+    - Directly `echo` the handler instance to get the formatted size.
+7. **Custom Source Support**:
+    - Implement `FileSourceInterface` and register your custom source.
+
+## Table Of Contents
+1. [Why Was This Class Created?](#why-was-this-class-created)
+2. [Useful Links](#useful-links)
+3. [Requirements](#requirements)
+4. [Installation](#installation)
+5. [Usage](#usage)
+    - [Local File](#local-file)
+    - [Extending the Library](#extending-the-library)
+6. [Binary vs Decimal Units](#binary-vs-decimal-units)
+    - [Switching Units](#switching-units)
+    - [Dynamic Locale and Unit Customization](#dynamic-locale-and-unit-customization)
+7. [API Reference](#api-reference)
+    - [Source Methods](#source-methods)
+    - [Configuration Methods](#configuration-methods)
+    - [Output Methods](#output-methods)
+8. [Extensions](#extensions)
+    - [Available Extensions](#available-extensions)
+9. [Contributing](#contributing)
+10. [License](#license)
+
 ### Why Was This Class Created?
 When working with file sizes, differences in measurement units across systems can cause confusion:
 - **Cross-OS Consistency**: File size interpretations vary between operating systems (Windows, Linux, macOS) and hardware (HDD/SSD manufacturers often use decimal, while OS file systems may use binary).
@@ -38,25 +76,7 @@ When working with file sizes, differences in measurement units across systems ca
 5. [Metric View: What are binary prefixes?](https://metricviews.uk/2024/02/18/what-are-binary-prefixes/?utm_source=filesize-handler)
     - Provides an overview of binary prefixes and their usage
 
-
-### Features
-1. **Supports Local, Remote, and FTP Files:**
-    - Easily calculate file sizes from multiple sources.
-2. **Binary and Decimal Calculations:**
-    - Switch between binary (KiB, MiB, etc.) and decimal (KB, MB, etc.) bases with simple methods.
-3. **Fluent Interface:**
-    - Intuitive method chaining for base selection and size formatting.
-4. **Extensibility:**
-    - Ready for integration with cloud storage systems like S3 and Google Cloud.
-5. **i18n Support:**
-    - Format file size with custom localized units.
-    - Dynamically provide translations for units.
-6. **Chaining and Echo Support:**
-    - Supports method chaining for cleaner code.
-    - Directly `echo` the handler instance to get the formatted size.
-7. **Custom Source Support**:
-    - Implement `FileSourceInterface` and register your custom source.
-
+    
 ### Requirements
 - **PHP**: Version 8.0 or higher
 - **PHP Extension** - `ext-intl`: Required
@@ -75,16 +95,16 @@ use Nassiry\FileSizeUtility\FileSizeHandler;
 
 $handler = FileSizeHandler::create()
     ->local('/path/to/file')
-    ->baseBinary();
+    ->binary();
 
 // Get the formatted size
-echo $handler->formattedSize(); // Example output: "1.23 MiB"
+echo $handler->format(); // Example output: "1.23 MiB"
 
 // Or use directly with echo
 echo FileSizeHandler::create()
     ->local('/path/to/file')
-    ->baseBinary()
-    ->formattedSize();
+    ->binary()
+    ->format();
 ```
 
 ### Extending the Library
@@ -108,11 +128,11 @@ $customSource = new CustomCloudSource('api-key', '/path/to/file');
 // Once implemented, register your custom source using:
 $handler = FileSizeHandler::create()
     ->from($customSource)
-    ->baseBinary();
+    ->binary();
     
-echo $handler->formattedSize(); // Example output: "1.23 MiB"
+echo $handler->format(); // Example output: "1.23 MiB"
 ```
-> For more information on extending the library, check the official extensions available.
+> For more information on extending the library, check the [official extensions](#available-extensions) available.
 
 ## Binary vs Decimal Units
 ### Switching Units
@@ -121,10 +141,10 @@ $handler = FileSizeHandler::create()
     ->local('/path/to/file.txt');
 
 // Default: Binary (1024-based)
-echo $handler->formattedSize(); // Output: "1.23 MiB"
+echo $handler->format(); // Output: "1.23 MiB"
 
 // Switch to Decimal (1000-based)
-echo $handler->baseDecimal()->formattedSize(); // Output: "1.30 MB"
+echo $handler->decimal()->format(); // Output: "1.30 MB"
 ```
 
 ### Dynamic Locale and Unit Customization
@@ -137,9 +157,9 @@ $customUnits = [
 
 $handler = FileSizeHandler::create('fr_FR', $customUnits)
     ->local('/path/to/file')
-    ->baseBinary();
+    ->binary();
 
-echo $handler->formattedSize(1); // Example output: "1,2 Mio"
+echo $handler->format(1); // Example output: "1,2 Mio"
 ```
 #### Key Points:
 Two-letter country codes are based on the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) standard and are used in locale naming conventions.
@@ -160,18 +180,18 @@ Initializes a new `FileSizeHandler` instance.
   Allows integration of a custom file source by implementing the `FileSourceInterface`.
 
 #### Configuration Methods
-- `baseBinary(): self`  
+- `binary(): self`  
   Switches unit calculation to binary (1024-based).
 
-- `baseDecimal(): self`  
+- `decimal(): self`  
   Switches unit calculation to decimal (1000-based).
   
 #### Output Methods
 
-- `sizeInBytes(): int`  
+- `bytes(): int`  
   Returns the file size in bytes.
 
-- `formattedSize(int $precision = 2): string`  
+- `format(int $precision = 2): string`  
   Returns the formatted file size with the specified precision.
 
 ### Extensions
@@ -190,6 +210,22 @@ Initializes a new `FileSizeHandler` instance.
 
 ### Contributing
 Feel free to submit issues or pull requests to improve the package. Contributions are welcome!
+
+
+### Changelog
+
+See [CHANGELOG](CHANGELOG.md) for release details.
+
+#### ⚠️ Deprecated Methods
+
+As of version 1.1.0, the following methods are deprecated and will be removed in version 2.0.0:
+
+| Deprecated        | Use Instead |
+|------------------|-------------|
+| `baseBinary()`    | `binary()`  |
+| `baseDecimal()`   | `decimal()` |
+| `formattedSize()` | `format()`  |
+| `sizeInBytes()`   | `bytes()`   |
 
 ### License
 This package is open-source software licensed under the [MIT license](LICENSE).

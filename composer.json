@@ -1,6 +1,7 @@
 {
     "name": "nassiry/filesize-handler",
     "description": "A PHP package for handling file size with binary, decimal & locale units support.",
+    "version": "1.1.0",
     "keywords": [
         "file-size",
         "php-file-zie",
